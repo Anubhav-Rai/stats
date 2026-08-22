@@ -348,6 +348,10 @@
 "Drives" = "Drive"; // translategemma:4b
 "SMART data" = "Data SMART"; // translategemma:4b
 "ATA SMART data" = "Data ATA SMART"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "Siklus daya"; // gemma4:31b
 "Power on hours" = "Jam menyala"; // gemma4:31b
 "Critical warning" = "Peringatan kritis"; // gemma4:31b-it-qat

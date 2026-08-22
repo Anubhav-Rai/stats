@@ -348,6 +348,10 @@
 "Drives" = "Unidades";
 "SMART data" = "Datos SMART"; // translategemma:4b
 "ATA SMART data" = "Datos ATA SMART"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "Ciclos de carga"; // gemma4:31b
 "Power on hours" = "Horas de encendido"; // gemma4:31b
 "Critical warning" = "Advertencia crítica"; // gemma4:31b-it-qat

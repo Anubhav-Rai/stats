@@ -348,6 +348,10 @@
 "Drives" = "درایوها"; // translategemma:4b
 "SMART data" = "داده‌های SMART"; // gemma4:31b
 "ATA SMART data" = "داده‌های ATA SMART"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "تعداد چرخه ها"; // gemma4:31b
 "Power on hours" = "ساعات کارکرد"; // gemma4:31b
 "Critical warning" = "هشدار بحرانی"; // gemma4:31b-it-qat

@@ -348,6 +348,10 @@
 "Drives" = "ไดรฟ์"; // gemma4:31b
 "SMART data" = "ข้อมูล SMART"; // translategemma:4b
 "ATA SMART data" = "ข้อมูล ATA SMART"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "จำนวนรอบการชาร์จ"; // gemma4:31b
 "Power on hours" = "ชั่วโมงการทำงาน"; // gemma4:31b
 "Critical warning" = "คำเตือนระดับวิกฤต"; // gemma4:31b-it-qat

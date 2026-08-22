@@ -348,6 +348,10 @@
 "Drives" = "Dyski";
 "SMART data" = "Dane SMART";
 "ATA SMART data" = "Dane ATA SMART";
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "Liczba cykli";
 "Power on hours" = "Godziny pracy";
 "Critical warning" = "Ostrzeżenie krytyczne";

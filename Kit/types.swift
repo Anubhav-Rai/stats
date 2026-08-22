@@ -186,6 +186,14 @@ public let ReaderUpdateIntervals: [KeyValue_t] = [
     KeyValue_t(key: "30", value: "30 sec"),
     KeyValue_t(key: "60", value: "60 sec")
 ]
+public let SMARTUpdateIntervals: [KeyValue_t] = [
+    KeyValue_t(key: "0", value: "Same as update interval"),
+    KeyValue_t(key: "60", value: "1 minute"),
+    KeyValue_t(key: "300", value: "5 minutes"),
+    KeyValue_t(key: "900", value: "15 minutes"),
+    KeyValue_t(key: "1800", value: "30 minutes"),
+    KeyValue_t(key: "3600", value: "1 hour")
+]
 public let NumbersOfProcesses: [Int] = [0, 3, 5, 8, 10, 15]
 
 public let NetworkReaders: [KeyValue_t] = [

@@ -348,6 +348,10 @@
 "Drives" = "Schijven"; // translategemma:4b
 "SMART data" = "SMART-gegevens"; // translategemma:4b
 "ATA SMART data" = "ATA SMART-gegevens"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "Aantal cycli"; // gemma4:31b
 "Power on hours" = "Uren ingeschakeld"; // gemma4:31b
 "Critical warning" = "Kritieke waarschuwing"; // gemma4:31b-it-qat

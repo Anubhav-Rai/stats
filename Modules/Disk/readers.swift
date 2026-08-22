@@ -54,8 +54,12 @@ internal class CapacityReader: Reader<Disks> {
     private var ATASMART: Bool {
         Store.shared.bool(key: "\(ModuleType.disk.stringValue)_ATASMART", defaultValue: false)
     }
+    private var SMARTUpdateInterval: Int {
+        Store.shared.int(key: "\(ModuleType.disk.stringValue)_SMARTUpdateInterval", defaultValue: 0)
+    }
     
     private var purgableSpace: [URL: (Date, Int64)] = [:]
+    private var smartCache: [String: (date: Date, smart: smart_t?, atasmart: Bool)] = [:]
     private var smartTotals: [String: (read: Int64, written: Int64)] = [:]
     private var smartEnableAttempted: Set<String> = []
     
@@ -83,6 +87,7 @@ internal class CapacityReader: Reader<Disks> {
                             if d.removable && !removableState {
                                 if d.parent != 0 { IOObjectRelease(d.parent) }
                                 if let path = d.path { self.purgableSpace.removeValue(forKey: path) }
+                                self.smartCache.removeValue(forKey: BSDName)
                                 self.list.remove(at: idx)
                                 continue
                             }
@@ -90,11 +95,12 @@ internal class CapacityReader: Reader<Disks> {
                             if driveIdentityChanged(d, url, disk) {
                                 if d.parent != 0 { IOObjectRelease(d.parent) }
                                 if let path = d.path { self.purgableSpace.removeValue(forKey: path) }
+                                self.smartCache.removeValue(forKey: BSDName)
                                 self.list.remove(at: idx)
                             } else {
                                 if let path = d.path {
                                     self.list.updateFreeSize(idx, newValue: self.diskSpaceInBytes(path, fileSystem: d.fileSystem).free)
-                                    self.list.updateSMARTData(idx, smart: self.getSMARTDetails(for: BSDName))
+                                    self.list.updateSMARTData(idx, smart: self.smartDetails(for: BSDName))
                                 }
                                 continue
                             }
@@ -106,7 +112,7 @@ internal class CapacityReader: Reader<Disks> {
                                 d.free = space.free
                                 d.size = space.total
                             }
-                            d.smart = self.getSMARTDetails(for: BSDName)
+                            d.smart = self.smartDetails(for: BSDName)
                             guard d.size != 0 else {
                                 if d.parent != 0 { IOObjectRelease(d.parent) }
                                 continue
@@ -124,6 +130,7 @@ internal class CapacityReader: Reader<Disks> {
                 let d = self.list.array[idx]
                 if d.parent != 0 { IOObjectRelease(d.parent) }
                 if let path = d.path { self.purgableSpace.removeValue(forKey: path) }
+                self.smartCache.removeValue(forKey: BSDName)
                 self.list.remove(at: idx)
             }
         }
@@ -180,6 +187,24 @@ internal class CapacityReader: Reader<Disks> {
         return (total, free)
     }
     
+    private func smartDetails(for BSDName: String) -> smart_t? {
+        guard self.SMART else {
+            self.smartCache.removeValue(forKey: BSDName)
+            return nil
+        }
+
+        let interval = self.SMARTUpdateInterval
+        let atasmart = self.ATASMART
+        if interval != 0, let cached = self.smartCache[BSDName], cached.atasmart == atasmart,
+           Date().timeIntervalSince(cached.date) < Double(interval) {
+            return cached.smart
+        }
+
+        let smart = self.getSMARTDetails(for: BSDName)
+        self.smartCache[BSDName] = (date: Date(), smart: smart, atasmart: atasmart)
+        return smart
+    }
+
     private func getSMARTDetails(for BSDName: String) -> smart_t? {
         guard self.SMART else { return nil }
         

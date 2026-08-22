@@ -348,6 +348,10 @@
 "Drives" = "Pogoni";
 "SMART data" = "SMART podatki"; // gemma4:31b
 "ATA SMART data" = "Podatki ATA SMART"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "Število ciklov"; // gemma4:31b
 "Power on hours" = "Ure delovanja"; // gemma4:31b
 "Critical warning" = "Kritično opozorilo"; // gemma4:31b-it-qat

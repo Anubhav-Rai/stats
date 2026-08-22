@@ -348,6 +348,10 @@
 "Drives" = "இயக்கிகள்";
 "SMART data" = "SMART தரவு";
 "ATA SMART data" = "ATA SMART தரவு";
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "மின் சுழற்சிகள்";
 "Power on hours" = "இயக்க நேரம்";
 "Critical warning" = "கடுமையான எச்சரிக்கை";

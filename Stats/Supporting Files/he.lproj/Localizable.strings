@@ -348,6 +348,10 @@
 "Drives" = "כוננים"; // gemma4:31b
 "SMART data" = "נתוני SMART"; // gemma4:31b
 "ATA SMART data" = "נתוני ATA SMART"; // gemma4:31b
+"SMART update interval" = "SMART update interval";
+"Same as update interval" = "Same as update interval";
+"30 minutes" = "30 minutes";
+"1 hour" = "1 hour";
 "Power cycles" = "מחזורי טעינה"; // gemma4:31b
 "Power on hours" = "שעות הפעלה"; // gemma4:31b
 "Critical warning" = "אזהרה קריטית"; // gemma4:31b-it-qat
