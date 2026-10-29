@@ -414,6 +414,9 @@
 "Right fan" = "右側風扇";
 "Fastest fan" = "最快速度";
 "Sensor to show" = "要顯示的感知器";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "允許存取 Wi-Fi 詳細資訊";

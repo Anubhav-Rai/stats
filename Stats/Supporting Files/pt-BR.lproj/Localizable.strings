@@ -414,6 +414,9 @@
 "Right fan" = "Direita";
 "Fastest fan" = "Ventoinha mais rápida";
 "Sensor to show" = "Sensor a exibir"; // gemma4:31b
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Permitir acesso aos detalhes do Wi-Fi";

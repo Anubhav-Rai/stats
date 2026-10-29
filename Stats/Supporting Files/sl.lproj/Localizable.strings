@@ -414,6 +414,9 @@
 "Right fan" = "Desni ventilator";
 "Fastest fan" = "Najhitrejši ventilator";
 "Sensor to show" = "Senzor za prikaz";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Dovoli dostop do podatkov o omrežju Wi-Fi";

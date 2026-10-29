@@ -414,6 +414,9 @@
 "Right fan" = "Højre"; // gemma4:31b
 "Fastest fan" = "Hurtigste"; // gemma4:31b
 "Sensor to show" = "Sensor der skal vises"; // gemma4:31b
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Tillad adgang til Wi-Fi detaljer";

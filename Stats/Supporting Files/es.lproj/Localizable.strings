@@ -414,6 +414,9 @@
 "Right fan" = "Ventilador derecho";
 "Fastest fan" = "Ventilador más veloz";
 "Sensor to show" = "Sensor a mostrar";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Permitir el acceso a los detalles de Wi-Fi";

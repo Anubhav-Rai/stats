@@ -414,6 +414,9 @@
 "Right fan" = "오른쪽 팬";
 "Fastest fan" = "가장 빠른 팬";
 "Sensor to show" = "표시할 센서";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Wi-Fi 상세 정보에 대한 액세스 허용";

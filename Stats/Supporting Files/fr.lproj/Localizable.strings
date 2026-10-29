@@ -414,6 +414,9 @@
 "Right fan" = "Droite";
 "Fastest fan" = "Le plus rapide";
 "Sensor to show" = "Capteur à afficher"; // gemma4:31b
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Autoriser l'accès aux détails Wi-Fi";

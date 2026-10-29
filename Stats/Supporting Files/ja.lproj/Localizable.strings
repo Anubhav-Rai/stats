@@ -414,6 +414,9 @@
 "Right fan" = "右ファン";
 "Fastest fan" = "最速ファン";
 "Sensor to show" = "表示するセンサー"; // gemma4:31b
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Wi-Fi 詳細へのアクセスを許可";

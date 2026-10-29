@@ -19,6 +19,9 @@ internal class Settings: NSStackView, Settings_v {
     private var fansSyncState: Bool = false
     private var unknownSensorsState: Bool = false
     private var fanValueState: FanValue = .percentage
+    private var hideTemperatureBelowValue: Int = 0
+    private var hideStoppedFansState: Bool = false
+    private var overlayState: Bool = false
     private var widgets: [widget_t] = []
     
     public var callback: (() -> Void) = {}
@@ -47,6 +50,9 @@ internal class Settings: NSStackView, Settings_v {
         self.unknownSensorsState = Store.shared.bool(key: "\(self.title)_unknown", defaultValue: self.unknownSensorsState)
         self.fanValueState = FanValue(rawValue: Store.shared.string(key: "\(self.title)_fanValue", defaultValue: self.fanValueState.rawValue)) ?? .percentage
         self.selectedSensor = Store.shared.string(key: "\(self.title)_sensor", defaultValue: self.selectedSensor)
+        self.hideTemperatureBelowValue = Store.shared.int(key: "\(self.title)_hideTemperatureBelow", defaultValue: self.hideTemperatureBelowValue)
+        self.hideStoppedFansState = Store.shared.bool(key: "\(self.title)_hideStoppedFans", defaultValue: self.hideStoppedFansState)
+        self.overlayState = Store.shared.bool(key: "\(self.title)_overlay", defaultValue: self.overlayState)
         
         self.addArrangedSubview(PreferencesSection([
             PreferencesRow(localizedString("Update interval"), component: selectView(
@@ -89,6 +95,21 @@ internal class Settings: NSStackView, Settings_v {
             items: [],
             selected: self.selectedSensor)
         ))
+        sensorsRows.append(PreferencesRow(localizedString("Hide temperature below"), component: selectView(
+            action: #selector(self.changeHideTemperatureBelow),
+            items: [KeyValue_t(key: "0", value: "Disabled")] + [40, 50, 60, 70, 80].map {
+                KeyValue_t(key: "\($0)", value: temperature(Double($0)))
+            },
+            selected: "\(self.hideTemperatureBelowValue)"
+        )))
+        sensorsRows.append(PreferencesRow(localizedString("Hide stopped fans"), component: switchView(
+            action: #selector(self.toggleHideStoppedFans),
+            state: self.hideStoppedFansState
+        )))
+        sensorsRows.append(PreferencesRow(localizedString("Show on screen"), component: switchView(
+            action: #selector(self.toggleOverlay),
+            state: self.overlayState
+        )))
         let sensorsPrefs = PreferencesSection(sensorsRows)
         self.sensorsPrefs = sensorsPrefs
         self.addArrangedSubview(sensorsPrefs)
@@ -198,6 +219,22 @@ internal class Settings: NSStackView, Settings_v {
             Store.shared.set(key: "\(self.title)_fanValue", value: self.fanValueState.rawValue)
             self.callback()
         }
+    }
+    @objc private func changeHideTemperatureBelow(_ sender: NSMenuItem) {
+        guard let key = sender.representedObject as? String, let value = Int(key) else { return }
+        self.hideTemperatureBelowValue = value
+        Store.shared.set(key: "\(self.title)_hideTemperatureBelow", value: value)
+        self.callback()
+    }
+    @objc private func toggleHideStoppedFans(_ sender: NSControl) {
+        self.hideStoppedFansState = controlState(sender)
+        Store.shared.set(key: "\(self.title)_hideStoppedFans", value: self.hideStoppedFansState)
+        self.callback()
+    }
+    @objc private func toggleOverlay(_ sender: NSControl) {
+        self.overlayState = controlState(sender)
+        Store.shared.set(key: "\(self.title)_overlay", value: self.overlayState)
+        self.callback()
     }
     @objc private func handleSelection(_ sender: NSPopUpButton) {
         guard let item = sender.selectedItem, let id = item.representedObject as? String else { return }

@@ -414,6 +414,9 @@
 "Right fan" = "Правый";
 "Fastest fan" = "Самый быстрый";
 "Sensor to show" = "Активный датчик";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Разрешить доступ к деталям Wi-Fi";

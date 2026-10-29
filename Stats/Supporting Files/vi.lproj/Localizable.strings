@@ -414,6 +414,9 @@
 "Right fan" = "Quạt bên phải";
 "Fastest fan" = "Quạt nhanh nhất";
 "Sensor to show" = "Cảm biến hiển thị";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Cho phép truy cập chi tiết Wi-Fi";

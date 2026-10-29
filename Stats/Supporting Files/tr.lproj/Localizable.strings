@@ -414,6 +414,9 @@
 "Right fan" = "Sağ fan";
 "Fastest fan" = "En hızlı fan";
 "Sensor to show" = "Gösterilecek sensör";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Wi-Fi ayrıntılarına erişime izin ver";

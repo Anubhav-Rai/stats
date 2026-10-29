@@ -414,6 +414,9 @@
 "Right fan" = "Pravý"; // gemma4:31b
 "Fastest fan" = "Nejrychlejší"; // translategemma:4b
 "Sensor to show" = "Senzor k zobrazení"; // gemma4:31b
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Povolit přístup k podrobnostem Wi-Fi";

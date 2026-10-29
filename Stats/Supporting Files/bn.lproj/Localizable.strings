@@ -414,6 +414,9 @@
 "Right fan" = "ডান";
 "Fastest fan" = "দ্রুততম";
 "Sensor to show" = "দেখানোর জন্য সেন্সর";
+"Hide temperature below" = "Hide temperature below";
+"Hide stopped fans" = "Hide stopped fans";
+"Show on screen" = "Show on screen";
 
 // Network
 "Allow access to Wi-Fi details" = "Wi-Fi বিবরণে অ্যাক্সেস অনুমতি দিন";

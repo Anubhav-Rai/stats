@@ -18,9 +18,20 @@ public class Sensors: Module {
     private let settingsView: Settings
     private let portalView: Portal
     private let notificationsView: Notifications
+    private let overlay: Overlay = Overlay()
     
     private var fanValueState: FanValue {
         FanValue(rawValue: Store.shared.string(key: "\(self.config.name)_fanValue", defaultValue: "percentage")) ?? .percentage
+    }
+    
+    private var hideTemperatureBelow: Int {
+        Store.shared.int(key: "\(self.config.name)_hideTemperatureBelow", defaultValue: 0)
+    }
+    private var hideStoppedFans: Bool {
+        Store.shared.bool(key: "\(self.config.name)_hideStoppedFans", defaultValue: false)
+    }
+    private var overlayState: Bool {
+        Store.shared.bool(key: "\(self.config.name)_overlay", defaultValue: false)
     }
     
     private var selectedSensor: String
@@ -106,6 +117,24 @@ public class Sensors: Module {
         self.portalView.usageCallback(value.sensors)
         self.notificationsView.usageCallback(value.sensors)
         
+        let hideTemperatureBelow = Double(self.hideTemperatureBelow)
+        let hideStoppedFans = self.hideStoppedFans
+        let visible = value.sensors.filter { (s: Sensor_p) in
+            guard s.state else { return false }
+            if s.type == .temperature && s.value < hideTemperatureBelow {
+                return false
+            }
+            if hideStoppedFans, let f = s as? Fan, f.percentage == 0 {
+                return false
+            }
+            return true
+        }
+        
+        let overlayState = self.overlayState
+        DispatchQueue.main.async { [weak self] in
+            self?.overlay.setValues(overlayState ? visible : [])
+        }
+        
         let activeWidgets = self.menuBar.widgets.filter{ $0.isActive }
         self.sensorsReader?.sleepMode(state: activeWidgets.contains(where: {$0.item is Label}) && activeWidgets.count == 1)
         
@@ -128,16 +157,14 @@ public class Sensors: Module {
             case let widget as StackWidget:
                 var list: [Stack_t] = []
                 
-                value.sensors.forEach { (s: Sensor_p) in
-                    if s.state {
-                        var value = s.formattedMiniValue
-                        if let f = s as? Fan {
-                            if self.fanValueState == .percentage {
-                                value = "\(f.percentage)%"
-                            }
+                visible.forEach { (s: Sensor_p) in
+                    var value = s.formattedMiniValue
+                    if let f = s as? Fan {
+                        if self.fanValueState == .percentage {
+                            value = "\(f.percentage)%"
                         }
-                        list.append(Stack_t(key: s.key, value: value))
                     }
+                    list.append(Stack_t(key: s.key, value: value))
                 }
                 
                 widget.setValues(list)
